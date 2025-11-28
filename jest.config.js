@@ -1,3 +1,32 @@
 module.exports = {
   preset: 'react-native',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  setupFiles: ['<rootDir>/jest.setup.js'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(react-native|@react-native|@react-navigation|react-redux)/)',
+  ],
+  moduleNameMapper: {
+    '\\.svg': '<rootDir>/__mocks__/svgMock.js',
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@store': '<rootDir>/src/stores/$1',
+    '^@assets': '<rootDir>/src/assets/$1',
+    '^@types': '<rootDir>/src/types/$1',
+    '^@atoms': '<rootDir>/src/ui/atoms/$1',
+    '^@molecules': '<rootDir>/src/ui/molecules/$1',
+    '^@organisms': '<rootDir>/src/ui/organisms/$1',
+    '^@screens': '<rootDir>/src/ui/screens/$1',
+    '^@templates': '<rootDir>/src/ui/templates/$1',
+    '^@themes': '<rootDir>/src/themes/$1',
+    '^@utils': '<rootDir>/src/utils/$1',
+    '^@navigation': '<rootDir>/src/navigation/$1',
+    '^@hooks': '<rootDir>/src/hooks/$1',
+  },
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$',
+  testPathIgnorePatterns: ['/node_modules/', '/android/', '/ios/'],
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!src/**/*.d.ts',
+    '!src/**/*.stories.{ts,tsx}',
+    '!src/**/index.{ts,tsx}',
+  ],
 };
