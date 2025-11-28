@@ -12,9 +12,11 @@ export type Owner = {
 
 interface OwnersState {
   ownerList: Owner[];
+  sort: 'Name' | 'Cat';
 }
 
 const initialState: OwnersState = {
+  sort: 'Name',
   ownerList: [
     {
       id: '1',
@@ -90,6 +92,11 @@ const initialState: OwnersState = {
           name: 'Elips',
           age: '4 years 2 month',
         },
+        {
+          id: '9',
+          name: 'Circle',
+          age: '1 years 6 month',
+        },
       ],
     },
   ],
@@ -100,8 +107,6 @@ const owners = createSlice({
   initialState,
   reducers: {
     toggleFavorite: (state, action: PayloadAction<Owner>) => {
-      console.log('here red');
-
       const newOwnerList = state.ownerList.map(owner => {
         return {
           ...owner,
@@ -111,8 +116,16 @@ const owners = createSlice({
 
       state.ownerList = newOwnerList;
     },
+    selectSort: (
+      state,
+      action: PayloadAction<{ selectedSort: 'Name' | 'Cat' }>,
+    ) => {
+      console.log(action.payload.selectedSort);
+
+      state.sort = action.payload.selectedSort;
+    },
   },
 });
 
-export const { toggleFavorite } = owners.actions;
+export const { toggleFavorite, selectSort } = owners.actions;
 export const { reducer: ownerSlice } = owners;

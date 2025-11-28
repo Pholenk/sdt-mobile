@@ -28,4 +28,22 @@ export const SortRowStyles = StyleSheet.create({
     paddingHorizontal: 2,
     fontWeight: '800',
   },
+
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '100%',
+    paddingHorizontal: 20,
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 20,
+    width: '100%',
+    gap: 8,
+  },
 });
